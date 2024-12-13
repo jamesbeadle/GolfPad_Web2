@@ -17,22 +17,28 @@
 
   
     async function signInWithGoogle() {
+        console.log("Starting Google sign-in...");
+
         const { data, error: authError } = await supabase.auth.signInWithOAuth({
             provider: 'google',
             options: {
-            redirectTo: 'https://www.golfpad.xyz'
+                redirectTo: 'https://www.golfpad.xyz'
             }
         });
-    
+        
+        console.log("Sign-in response:", { data, authError });
+
         if (authError) {
             console.error('Error signing in with Google:', authError.message);
             return;
         };
-        
+
         if (data?.url) {
+            console.log("Redirecting user to OAuth URL:", data.url);
             window.location.href = data.url;
+        } else {
+            console.warn("No URL returned from signInWithOAuth. If this is the latest SDK version, you may need to handle OAuth differently.");
         }
-        
     }
   
 </script>
