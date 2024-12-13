@@ -6,30 +6,37 @@
   import type { AuthChangeEvent, Session } from '@supabase/supabase-js';
 
   import "../app.css";
-  
-  let isLoading = $state(true);
-  let backgroundSpinnerRemoved = $state(false);
-  let expanded = $state(false);
+
+  // Data and children are passed in from SvelteKit's load function.
+  export let data: { session: Session | null; supabase: any };
+  // In a SvelteKit layout, children are typically rendered via a <slot />
+  // so we do not need a separate variable for children beyond this.
+
+  let { session, supabase } = data;
+
+  let isLoading = true;
+  let backgroundSpinnerRemoved = false;
+  let expanded = false;
   let selectedRoute = 'home';
-  let isHomepage = $state(false);
-  
-  let { data, children } = $props();
-  let { session, supabase } = $derived(data);
+  let isHomepage = false;
 
-
-  let unsubscribeAuth: (() => void) | undefined; // Type for unsubscribe function
+  let unsubscribeAuth: (() => void) | undefined;
 
   onMount(() => {
     if (!browser) return;
 
+    // Remove the initial spinner
     const spinner = document.querySelector("body > #app-spinner");
     spinner?.remove();
     backgroundSpinnerRemoved = true;
 
-    isHomepage = browser && window.location.pathname === "/";
+    // Determine if we're on the homepage
+    isHomepage = window.location.pathname === "/";
 
+    // Listen for auth changes
     const { data: authListener } = supabase.auth.onAuthStateChange(
       (event: AuthChangeEvent, newSession: Session | null) => {
+        // If session changes, invalidate so the layout reloads its data
         if (newSession?.expires_at !== session?.expires_at) {
           invalidate("supabase:auth");
         }
@@ -37,10 +44,11 @@
     );
 
     unsubscribeAuth = authListener?.unsubscribe;
+    isLoading = false;
   });
 
   onDestroy(() => {
-    unsubscribeAuth?.(); 
+    unsubscribeAuth?.();
   });
 
   function toggleNav() {
@@ -53,7 +61,7 @@
     <div class="flex-none h-[80px] relative">
       <div class="absolute z-10 top-4 left-4">
         <button
-          onclick={toggleNav}
+          on:click={toggleNav}
           class="flex items-center justify-center w-12 h-12 text-2xl font-bold text-white bg-black rounded-full shadow-md">
           +
         </button>
@@ -67,8 +75,8 @@
 
     <NavOverlay {expanded} {selectedRoute} {toggleNav}/>
 
-    <div class="{isHomepage ? 'bg-BrandYellow  items-center justify-center relative' : 'bg-white'} flex-1 flex">
-      {@render children()}
+    <div class="{isHomepage ? 'bg-BrandYellow items-center justify-center relative' : 'bg-white'} flex-1 flex">
+      <slot></slot>
     </div>
 
     {#if !isHomepage}
