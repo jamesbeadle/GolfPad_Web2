@@ -18,7 +18,10 @@
   
     async function signInWithGoogle() {
         const { data, error: authError } = await supabase.auth.signInWithOAuth({
-            provider: 'google'
+            provider: 'google',
+            options: {
+            redirectTo: 'https://www.golfpad.xyz' // Ensure this matches your domain
+            }
         });
     
         if (authError) {
