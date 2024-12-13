@@ -20,7 +20,7 @@
         const { data, error: authError } = await supabase.auth.signInWithOAuth({
             provider: 'google',
             options: {
-            redirectTo: 'https://www.golfpad.xyz' // Ensure this matches your domain
+            redirectTo: 'https://www.golfpad.xyz'
             }
         });
     
@@ -28,6 +28,11 @@
             console.error('Error signing in with Google:', authError.message);
             return;
         };
+        
+        if (data?.url) {
+            window.location.href = data.url;
+        }
+        
     }
   
 </script>

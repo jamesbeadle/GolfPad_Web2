@@ -31,16 +31,16 @@
     const { data: authListener } = supabase.auth.onAuthStateChange(
       (event: AuthChangeEvent, newSession: Session | null) => {
         if (newSession?.expires_at !== session?.expires_at) {
-          invalidate("supabase:auth"); // Forces layout to reload data
+          invalidate("supabase:auth");
         }
       }
     );
 
-    unsubscribeAuth = authListener?.unsubscribe; // Store the unsubscribe function safely
+    unsubscribeAuth = authListener?.unsubscribe;
   });
 
   onDestroy(() => {
-    unsubscribeAuth?.(); // Cleanup the auth listener
+    unsubscribeAuth?.(); 
   });
 
   function toggleNav() {
