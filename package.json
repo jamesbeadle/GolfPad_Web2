@@ -25,7 +25,7 @@
 		"vite": "^6.0.0"
 	},
 	"dependencies": {
-		"@supabase/auth-helpers-sveltekit": "^0.13.0",
+		"@supabase/ssr": "^0.5.2",
 		"@supabase/supabase-js": "^2.47.6",
 		"@sveltejs/adapter-vercel": "^5.5.2"
 	}
