@@ -1,4 +1,3 @@
-// auth-store.ts
 import { writable } from "svelte/store";
 import type { User, Session } from "@supabase/supabase-js";
 import type { SupabaseClient } from '@supabase/supabase-js';
@@ -9,7 +8,6 @@ export function createAuthStore(supabase: SupabaseClient) {
     user: null 
   });
 
-  // Initialize session
   supabase.auth.getSession().then(({ data: { session } }) => {
     if (session?.user) {
       store.set({ isLoggedIn: true, user: session.user });

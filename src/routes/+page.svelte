@@ -4,24 +4,19 @@
     import type { User } from '@supabase/supabase-js';
     import { createAuthStore } from "$lib/stores/auth-store";
   
-    // `data` is provided by the load function from +layout.ts and contains { session, supabase, user }
     export let data: { session: any; supabase: any; user: User | null; };
   
     const { supabase } = data;
     
-    // Create the auth store with the provided Supabase client
-    const authStore = createAuthStore(supabase);
+    const authStore = createAuthStore(supabase); 
   
     async function signInWithGoogle() {
-      console.log("Starting Google sign-in...");
       const { data: signInData, error: authError } = await supabase.auth.signInWithOAuth({
         provider: 'google',
         options: {
           redirectTo: window.location.origin
         }
       });
-      
-      console.log("Sign-in response:", { data: signInData, authError });
   
       if (authError) {
         console.error('Error signing in with Google:', authError.message);
@@ -29,7 +24,6 @@
       }
   
       if (signInData?.url) {
-        console.log("Redirecting user to OAuth URL:", signInData.url);
         window.location.href = signInData.url;
       } else {
         console.warn("No URL returned from signInWithOAuth.");

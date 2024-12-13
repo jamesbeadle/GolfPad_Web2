@@ -7,10 +7,7 @@
 
   import "../app.css";
 
-  // Data and children are passed in from SvelteKit's load function.
   export let data: { session: Session | null; supabase: any };
-  // In a SvelteKit layout, children are typically rendered via a <slot />
-  // so we do not need a separate variable for children beyond this.
 
   let { session, supabase } = data;
 
@@ -25,18 +22,14 @@
   onMount(() => {
     if (!browser) return;
 
-    // Remove the initial spinner
     const spinner = document.querySelector("body > #app-spinner");
     spinner?.remove();
     backgroundSpinnerRemoved = true;
 
-    // Determine if we're on the homepage
     isHomepage = window.location.pathname === "/";
 
-    // Listen for auth changes
     const { data: authListener } = supabase.auth.onAuthStateChange(
       (event: AuthChangeEvent, newSession: Session | null) => {
-        // If session changes, invalidate so the layout reloads its data
         if (newSession?.expires_at !== session?.expires_at) {
           invalidate("supabase:auth");
         }
