@@ -1,16 +1,24 @@
 <script lang="ts">
   import { onMount, onDestroy } from "svelte";
   import { browser } from "$app/environment";
+  import { invalidate } from '$app/navigation'
   import NavOverlay from "$lib/components/shared/navigation.svelte";
+  import type { Session } from '@supabase/supabase-js';
+
   import "../app.css";
   
-  let isLoading = true;
-  let backgroundSpinnerRemoved = false;
-  let expanded = false;
-  let selectedRoute: string = 'home';
+  let isLoading = $state(true);
+  let backgroundSpinnerRemoved = $state(false);
+  let expanded = $state(false);
+  let selectedRoute = 'home';
+  let isHomepage = $state(false);
+  
+  let { data, children } = $props();
+  let { session, supabase } = $derived(data);
 
 
-  $: (() => {
+  onMount(() => {
+    
     if (!browser) {
       return;
     }
@@ -18,20 +26,22 @@
     const spinner = document.querySelector("body > #app-spinner");
     spinner?.remove();
     backgroundSpinnerRemoved = true;
-  })();
 
-  $: isHomepage = browser && window.location.pathname === "/";
+    isHomepage = browser && window.location.pathname === "/";
 
-  onMount(async () => {
-    expanded = false;
+    const { data } = supabase.auth.onAuthStateChange((_: any, newSession: Session | null) => {
+      if (newSession?.expires_at !== session?.expires_at) {
+        invalidate('supabase:auth')
+      }
+    })
+
     isLoading = false;
-    console.log(import.meta)
-    console.log(import.meta.env)
+    return () => data.subscription.unsubscribe();
   });
 
   onDestroy(() => {});
 
-  function toggleNav(): void {
+  function toggleNav() {
     expanded = !expanded;
   }
 </script>
@@ -41,7 +51,7 @@
     <div class="flex-none h-[80px] relative">
       <div class="absolute z-10 top-4 left-4">
         <button
-          on:click={toggleNav}
+          onclick={toggleNav}
           class="flex items-center justify-center w-12 h-12 text-2xl font-bold text-white bg-black rounded-full shadow-md">
           +
         </button>
@@ -56,7 +66,7 @@
     <NavOverlay {expanded} {selectedRoute} {toggleNav}/>
 
     <div class="{isHomepage ? 'bg-BrandYellow  items-center justify-center relative' : 'bg-white'} flex-1 flex">
-      <slot />
+      {@render children()}
     </div>
 
     {#if !isHomepage}

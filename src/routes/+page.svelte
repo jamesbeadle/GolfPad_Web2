@@ -1,33 +1,37 @@
 <script lang="ts">
     import Layout from "./Layout.svelte";  
     import Google from "$lib/components/icons/google.svelte";
-    import { createClient } from '@supabase/supabase-js';
+    import { authStore } from "$lib/stores/auth-store";
   
-    const supabase = createClient(import.meta.env.VITE_SUPABASE_URL, import.meta.env.VITE_SUPABASE_ANON_KEY);
+    let { data } = $props()
+    let { supabase } = $derived(data)
+
   
     async function signInWithGoogle() {
-      const { data, error: authError } = await supabase.auth.signInWithOAuth({
-        provider: 'google'
-      });
-  
-      if (authError) {
-        console.error('Error signing in with Google:', authError.message);
-      } else {
+        const { data, error: authError } = await supabase.auth.signInWithOAuth({
+            provider: 'google'
+        });
+    
+        if (authError) {
+            console.error('Error signing in with Google:', authError.message);
+            return;
+        };
 
-        //TODO Set Store variables
+        console.log(data)
+        console.log(data)
 
-        console.log(data);
-      }
+        //authStore.login(data.user, token, expires);
+
     }
   
 </script>
-<Layout>    
+<Layout data={data}>
    
     <div class="z-10 px-4 mb-20 text-center">
         <h1 class="mb-1 font-bold text-BrandForest">WELCOME TO <span class="condensed">GOLFPAD</span></h1>
         <h2 class="mx-16 mb-6 text-5xl font-black leading-tight text-black md:text-6xl condensed">THE FUTURE OF GOLF STARTS HERE</h2>
         
-        <button on:click={signInWithGoogle} class="brand-button">
+        <button onclick={signInWithGoogle} class="brand-button">
             <span class="flex flex-row items-center">
                 Sign In With Google
                 <Google className="ml-2 w-6" />
