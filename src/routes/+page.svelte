@@ -17,7 +17,7 @@
       const { data: signInData, error: authError } = await supabase.auth.signInWithOAuth({
         provider: 'google',
         options: {
-          redirectTo: 'https://www.golfpad.xyz'
+          redirectTo: window.location.origin
         }
       });
       
