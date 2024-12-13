@@ -25,6 +25,7 @@
   onMount(async () => {
     expanded = false;
     isLoading = false;
+    console.log(import.meta.env)
   });
 
   onDestroy(() => {});
