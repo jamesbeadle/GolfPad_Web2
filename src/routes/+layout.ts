@@ -1,43 +1,21 @@
-import { createBrowserClient, createServerClient, isBrowser } from '@supabase/ssr'
-import { PUBLIC_SUPABASE_ANON_KEY, PUBLIC_SUPABASE_URL } from '$env/static/public'
+// +layout.ts
+import { createSupabaseLoadClient } from '@supabase/auth-helpers-sveltekit'
+import { PUBLIC_SUPABASE_URL, PUBLIC_SUPABASE_ANON_KEY } from '$env/static/public'
 import type { LayoutLoad } from './$types'
 
-export const load: LayoutLoad = async ({ data, depends, fetch }) => {
-  /**
-   * Declare a dependency so the layout can be invalidated, for example, on
-   * session refresh.
-   */
-  depends('supabase:auth')
+export const load: LayoutLoad = (event) => {
+  const { data } = event;
 
-  const supabase = isBrowser()
-    ? createBrowserClient(PUBLIC_SUPABASE_URL, PUBLIC_SUPABASE_ANON_KEY, {
-        global: {
-          fetch,
-        },
-      })
-    : createServerClient(PUBLIC_SUPABASE_URL, PUBLIC_SUPABASE_ANON_KEY, {
-        global: {
-          fetch,
-        },
-        cookies: {
-          getAll() {
-            return data.cookies
-          },
-        },
-      })
+  const supabase = createSupabaseLoadClient({
+    supabaseUrl: PUBLIC_SUPABASE_URL,
+    supabaseKey: PUBLIC_SUPABASE_ANON_KEY,
+    serverSession: data.session,
+    event
+  });
 
-  /**
-   * It's fine to use `getSession` here, because on the client, `getSession` is
-   * safe, and on the server, it reads `session` from the `LayoutData`, which
-   * safely checked the session using `safeGetSession`.
-   */
-  const {
-    data: { session },
-  } = await supabase.auth.getSession()
-
-  const {
-    data: { user },
-  } = await supabase.auth.getUser()
-
-  return { session, supabase, user }
-}
+  return {
+    supabase,
+    session: data.session,
+    user: data.session?.user ?? null
+  };
+};
