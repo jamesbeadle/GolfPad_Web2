@@ -3,7 +3,7 @@
   import { browser } from "$app/environment";
   import { invalidate } from '$app/navigation'
   import NavOverlay from "$lib/components/shared/navigation.svelte";
-  import type { Session } from '@supabase/supabase-js';
+  import type { AuthChangeEvent, Session } from '@supabase/supabase-js';
 
   import "../app.css";
   
@@ -17,11 +17,10 @@
   let { session, supabase } = $derived(data);
 
 
+  let unsubscribeAuth: (() => void) | undefined; // Type for unsubscribe function
+
   onMount(() => {
-    
-    if (!browser) {
-      return;
-    }
+    if (!browser) return;
 
     const spinner = document.querySelector("body > #app-spinner");
     spinner?.remove();
@@ -29,17 +28,20 @@
 
     isHomepage = browser && window.location.pathname === "/";
 
-    const { data } = supabase.auth.onAuthStateChange((_: any, newSession: Session | null) => {
-      if (newSession?.expires_at !== session?.expires_at) {
-        invalidate('supabase:auth')
+    const { data: authListener } = supabase.auth.onAuthStateChange(
+      (event: AuthChangeEvent, newSession: Session | null) => {
+        if (newSession?.expires_at !== session?.expires_at) {
+          invalidate("supabase:auth"); // Forces layout to reload data
+        }
       }
-    })
+    );
 
-    isLoading = false;
-    return () => data.subscription.unsubscribe();
+    unsubscribeAuth = authListener?.unsubscribe; // Store the unsubscribe function safely
   });
 
-  onDestroy(() => {});
+  onDestroy(() => {
+    unsubscribeAuth?.(); // Cleanup the auth listener
+  });
 
   function toggleNav() {
     expanded = !expanded;

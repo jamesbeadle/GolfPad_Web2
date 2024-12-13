@@ -6,9 +6,12 @@
   
     let { data } = $props()
     let { supabase } = $derived(data)
+    
+   
     let user: User | null = $state(null);
-    authStore.subscribe((store) => {
-        user = store.user;
+
+    authStore.subscribe((session) => {
+        user = session.user;
     });
 
 
@@ -42,8 +45,6 @@
             <p>Welcome</p>
         {/if}
 
-        
-        
     </div>
     <div class="absolute bottom-0 left-0 z-0 w-full">
         <img src="golfball_mobile.png" alt="Golf Ball" class="object-cover w-full h-auto md:hidden">

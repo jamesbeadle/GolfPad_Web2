@@ -1,73 +1,31 @@
-// stores/authStore.ts
-import { writable, type Writable } from 'svelte/store';
-import type { User } from '../interfaces/user';
-import type { SessionData } from '../interfaces/session';
-import { supabase } from '$lib/superbaseClient';
+import { writable, type Writable } from "svelte/store";
+import type { User } from "../interfaces/user";
+import { supabase } from "$lib/superbaseClient";
 
 const createAuthStore = () => {
-  const store: Writable<SessionData> = writable({
+  const store: Writable<{ isLoggedIn: boolean; user: User | null }> = writable({
     isLoggedIn: false,
     user: null,
-    token: null,
-    expiry: null
   });
 
-  // Function to update the store with new session data
-  const updateSession = (session: any) => {
+  const initializeSession = async () => {
+    const { data: { session } } = await supabase.auth.getSession();
     if (session) {
-      store.update(state => ({
-        ...state,
-        isLoggedIn: true,
-        user: session.user,
-        token: session.access_token,
-        expiry: session.expires_at ? session.expires_at * 1000 : null // Convert to milliseconds if it's a timestamp
-      }));
-    } else {
-      store.set({
-        isLoggedIn: false,
-        user: null,
-        token: null,
-        expiry: null
-      });
+      store.set({ isLoggedIn: true, user: session.user });
     }
   };
 
-  // Listen for authentication state changes
-  supabase.auth.onAuthStateChange((event, session) => {
-    console.log('Auth state change:', event, session); // Useful for debugging
-    updateSession(session);
+  supabase.auth.onAuthStateChange((_, session) => {
+    if (session) {
+      store.set({ isLoggedIn: true, user: session.user });
+    } else {
+      store.set({ isLoggedIn: false, user: null });
+    }
   });
 
-  return {
-    subscribe: store.subscribe,
-    login: (user: User, token: string, expires_in: number) => {
-      const now = new Date();
-      store.update(state => ({
-        ...state,
-        isLoggedIn: true,
-        user,
-        token,
-        expiry: now.setSeconds(now.getSeconds() + expires_in)
-      }));
-    },
-    logout: async () => {
-      await supabase.auth.signOut(); // Sign out from Supabase
-      store.set({
-        isLoggedIn: false,
-        user: null,
-        token: null,
-        expiry: null
-      });
-    },
-    isExpired: (): boolean => {
-      let expired = true;
-      store.subscribe((session) => {
-        const now = new Date();
-        expired = session.expiry !== null && session.expiry < now.getTime();
-      })();
-      return expired;
-    }
-  };
+  initializeSession(); // Initialize on app load
+
+  return store;
 };
 
 export const authStore = createAuthStore();
