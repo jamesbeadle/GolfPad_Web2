@@ -4,7 +4,7 @@
     import { writable } from "svelte/store";
     import { goto } from "$app/navigation";
     import { page } from "$app/stores";
-  
+    import { authStore } from "$lib/stores/auth-store"; 
   
     export let expanded: boolean = false;
     export let selectedRoute: string = 'home';
@@ -12,10 +12,8 @@
   
     const navItems = writable<{ name: string; route: string }[]>([
       { name: 'HOME', route: 'home' },
-      { name: 'MY GAMES', route: 'games' },
       { name: 'WHITEPAPER', route: 'whitepaper' },
-      { name: 'GAME RULES', route: 'game-rules' },
-      { name: 'TEAM', route: 'team' }
+      { name: 'GAME RULES', route: 'game-rules' }
     ]);
   
     function selectRoute(route: string) {
@@ -88,7 +86,19 @@
             </button>
           </div>
         {/each}
+
+        {#if $authStore.isLoggedIn}
+          <div class="nav-item expanded">
+            <button
+              on:click={() => selectRoute('games')}
+              class="text-3xl lg:text-6xl font-bold condensed {selectedRoute === 'games' ? 'text-white' : 'text-black'}">
+              MY GAMES
+            </button>
+          </div>
+        {/if}
+        
       </div>
+      
   
       <div class="flex justify-between items-center p-5 text-xs lg:text-base">
         <div class="social-links">
