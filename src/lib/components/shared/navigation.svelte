@@ -43,9 +43,6 @@
         case '/whitepaper':
           selectedRoute = 'whitepaper';
           break;
-        case '/team':
-          selectedRoute = 'team';
-          break;
         case '/game-rules':
           selectedRoute = 'game-rules';
           break;

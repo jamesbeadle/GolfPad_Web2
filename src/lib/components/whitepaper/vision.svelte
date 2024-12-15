@@ -29,8 +29,7 @@
     </p>
   </div>
 
-  <!-- Additional Paragraphs -->
-  <div class="space-y-4 md:clear-right">
+  <div class="space-y-4 md:clear-right mt-2">
     <p>
       At the heart of <Golfpad /> are four distinctive golf game formats, designed
       to amplify the individual achievements of every round. These formats provide

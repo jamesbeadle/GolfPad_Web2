@@ -61,7 +61,6 @@
       <div class="bg-BrandYellow flex-none relative h-[50px] mt-auto">
         <div class="absolute z-10 bottom-4 left-4">
           <a href="/whitepaper" class="text-sm font-medium text-black">WHITEPAPER |</a> 
-          <a href="/team" class="text-sm font-medium text-black">TEAM |</a> 
           <a target="_blank" href="https://github.com/jamesbeadle/golfpad" class="text-sm font-medium text-black">GITHUB</a> 
         </div>
       </div>

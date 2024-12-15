@@ -7,7 +7,6 @@
     import DAO from "$lib/components/whitepaper/dao.svelte";
     import Marketing from "$lib/components/whitepaper/marketing.svelte";
     import RoadMap from "$lib/components/whitepaper/roadmap.svelte";
-    import Team from "$lib/components/whitepaper/team.svelte";
     import SystemArchitecture from "$lib/components/whitepaper/system-architecture.svelte";
     import AnonLayout from "../AnonLayout.svelte";
   
@@ -21,7 +20,6 @@
       { name: "DAO", component: DAO },
       { name: "Marketing", component: Marketing },
       { name: "Road Map", component: RoadMap },
-      { name: "Team", component: Team },
       { name: "System Architecture", component: SystemArchitecture },
     ];
   

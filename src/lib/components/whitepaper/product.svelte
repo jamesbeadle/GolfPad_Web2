@@ -1,4 +1,5 @@
 <script lang="ts">
+  import Golfpad from "../icons/golfpad.svelte";
   import Bands from "./modals/bands.svelte";
   import BuildIt from "./modals/build-it.svelte";
   import Mulligans from "./modals/mulligans.svelte";
@@ -63,36 +64,39 @@
   <NextUp closeModal={closeNextUp} visible={showNextUp} />
 {/if}
 
-<div class="flex flex-col space-y-4 text-base">
-  <h2 class="text-2xl font-black text-black condensed">OUR NEW GAMES</h2>
-    
-  <p>We want <span class="condensed">GOLFPAD</span> to have everything a user needs to play, learn and socialise with the world's community of golfers. 
-    Initially we have designed 4 new game formats for golfers to enjoy on our platform, with the DAO deciding on future additions. 
-  </p>
-  <p>
-    Our first 4 games will be released in the following order and are described in the following sections:
-  </p>
+<div class="md:px-4">
+  <h2 class="text-2xl condensed tracking-wide mb-2">
+    OUR NEW GAMES
+  </h2>
 
-  <div class="flex flex-col w-full space-y-4 md:flex-row md:space-y-0 md:space-x-2">
+  <div class="space-y-4">
+    <p>We want <Golfpad /> to have everything a user needs to play, learn and socialise with the world's community of golfers. 
+      Initially we have designed 4 new game formats for golfers to enjoy on our platform, with the DAO deciding on future additions. 
+    </p>
+    <p>
+      Our first 4 games will be released in the following order and are described in the following sections:
+    </p>
+  </div>
+  <div class="flex flex-col w-full space-y-4 md:flex-row md:space-y-0 md:space-x-2  mt-2">
     <div class="flex flex-col w-full space-y-2 md:w-1/4">
       <img src="game-images/prophet.png" alt="mulligans" class="w-full" />
       <p class="text-3xl text-center condensed md:text-lg">MULLIGANS</p>
-      <button on:click={openMulligans} class="px-4 py-2 text-xs rounded bg-BrandForest text-BrandYellow">Info</button>
+      <button on:click={openMulligans} class="px-4 py-2 text-xs rounded bg-BrandForest text-BrandYellow">More Info</button>
     </div>
     <div class="flex flex-col w-full space-y-2 md:w-1/4">
       <img src="game-images/bands.png" alt="bands" class="w-full" />
       <p class="text-3xl text-center condensed md:text-lg">BANDS</p>
-      <button on:click={openBands} class="px-4 py-2 text-xs rounded bg-BrandForest text-BrandYellow">Info</button>
+      <button on:click={openBands} class="px-4 py-2 text-xs rounded bg-BrandForest text-BrandYellow">More Info</button>
     </div>
     <div class="flex flex-col w-full space-y-2 md:w-1/4">
       <img src="game-images/build-it.png" alt="build-it" class="w-full" />
       <p class="text-3xl text-center condensed md:text-lg">BUILD IT</p>
-      <button on:click={openBuildIt} class="px-4 py-2 text-xs rounded bg-BrandForest text-BrandYellow">Info</button>
+      <button on:click={openBuildIt} class="px-4 py-2 text-xs rounded bg-BrandForest text-BrandYellow">More Info</button>
     </div>
     <div class="flex flex-col w-full space-y-2 md:w-1/4">
       <img src="game-images/next-up.png" alt="next-up" class="w-full" />
       <p class="text-3xl text-center condensed md:text-lg">NEXT UP</p>
-      <button on:click={openNextUp} class="px-4 py-2 text-xs rounded bg-BrandForest text-BrandYellow">Info</button>
+      <button on:click={openNextUp} class="px-4 py-2 text-xs rounded bg-BrandForest text-BrandYellow">More Info</button>
     </div>
   </div>
 </div>
