@@ -1,1 +1,0 @@
-<span class="font-extrabold text-black condensed tracking-wide">GOLFPAD</span>

@@ -1,17 +1,12 @@
 <script lang="ts">
-    import Modal from "$lib/components/shared/modal.svelte";
+    import SimpleModal from "$lib/components/shared/simple-modal.svelte";
 
     export let visible: boolean;
     export let closeModal: () => void;
   </script>
   
-  <Modal showModal={visible} onClose={closeModal}>
+  <SimpleModal title="MULLIGANS" showModal={visible} onClose={closeModal}>
     <div class="mx-4 p-4">
-      <div class="flex justify-between items-center mb-4">
-        <p class="condensed text-3xl">MULLIGANS</p>
-        <button class="times-button text-2xl" on:click={closeModal}>&times;</button>
-      </div>
-  
       <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
         <img 
           src="whitepaper/mulligans-game.png" 
@@ -27,5 +22,5 @@
         </div>
       </div>
     </div>
-  </Modal>
+  </SimpleModal>
   

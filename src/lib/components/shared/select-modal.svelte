@@ -24,7 +24,6 @@
   });
 
   const handlePointerDown = (e: PointerEvent) => {
-    // Check if pointer down started on the backdrop
     if (e.target === e.currentTarget) {
       startOnBackdrop = true;
     } else {
@@ -33,7 +32,6 @@
   };
 
   const handlePointerUp = (e: PointerEvent) => {
-    // Close only if pointer started and ended on backdrop
     if (startOnBackdrop && e.target === e.currentTarget) {
       onClose();
     }
@@ -41,7 +39,6 @@
   };
 
   onMount(() => {
-    // Move focus into the modal for accessibility
     if (modalElement && showModal) {
       modalElement.focus();
     }

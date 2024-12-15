@@ -1,5 +1,5 @@
 <script lang="ts">
-  import Golfpad from "../icons/golfpad.svelte";
+  import BrandText from "../icons/brand-text.svelte";
   import Bands from "./modals/bands.svelte";
   import BuildIt from "./modals/build-it.svelte";
   import Mulligans from "./modals/mulligans.svelte";
@@ -71,13 +71,13 @@
 
   <div class="space-y-4">
     <p>
-      We’re excited to introduce our four new game formats crafted for the next generation of golfers. Each one provides a fresh avenue to challenge your abilities, refine your technique, and discover new dimensions of the sport.
+      We’re excited to introduce our <BrandText content="4" /> new game formats crafted for the next generation of golfers. Each one provides a fresh avenue to challenge your abilities, refine your technique, and discover new dimensions of the sport.
     </p>
     <p>
-      These formats blend tradition with innovation. Some build on classic rules through subtle twists while others introduce entirely new approaches that spark excitement. They encourage personal growth and friendly competition while inviting players to connect and celebrate a shared love of the game.
+      These formats blend tradition with innovation. Some build on classic rules through subtle twists while others introduce entirely new approaches that spark excitement. They encourage personal growth and friendly competition while inviting players to connect and enjoy their shared love of the game.
     </p>
     <p>
-      In the sections that follow, we’ll highlight each of these four experiences, explaining what sets them apart and why they belong in your golf journey. As our platform evolves, we’ll continue shaping new and exciting ways to play, ensuring <Golfpad /> remains a hub where golf’s past, present, and future are seamlessly united.
+      In the sections that follow, we’ll highlight each of these four experiences, explaining what sets them apart and why they belong in your golf journey. As our platform evolves, we’ll continue shaping new and exciting ways to play, ensuring <BrandText content="GOLFPAD" /> remains a hub where golf’s past, present, and future are seamlessly united.
     </p>
   </div>
   <div class="flex flex-col w-full space-y-4 md:flex-row md:space-y-0 md:space-x-2  mt-2">
