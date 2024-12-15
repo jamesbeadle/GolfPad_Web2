@@ -70,11 +70,14 @@
   </h2>
 
   <div class="space-y-4">
-    <p>We want <Golfpad /> to have everything a user needs to play, learn and socialise with the world's community of golfers. 
-      Initially we have designed 4 new game formats for golfers to enjoy on our platform, with the DAO deciding on future additions. 
+    <p>
+      We’re excited to introduce our four new game formats crafted for the next generation of golfers. Each one provides a fresh avenue to challenge your abilities, refine your technique, and discover new dimensions of the sport.
     </p>
     <p>
-      Our first 4 games will be released in the following order and are described in the following sections:
+      These formats blend tradition with innovation. Some build on classic rules through subtle twists while others introduce entirely new approaches that spark excitement. They encourage personal growth and friendly competition while inviting players to connect and celebrate a shared love of the game.
+    </p>
+    <p>
+      In the sections that follow, we’ll highlight each of these four experiences, explaining what sets them apart and why they belong in your golf journey. As our platform evolves, we’ll continue shaping new and exciting ways to play, ensuring <Golfpad /> remains a hub where golf’s past, present, and future are seamlessly united.
     </p>
   </div>
   <div class="flex flex-col w-full space-y-4 md:flex-row md:space-y-0 md:space-x-2  mt-2">
