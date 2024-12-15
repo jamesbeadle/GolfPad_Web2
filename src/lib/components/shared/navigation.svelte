@@ -96,14 +96,13 @@
             </button>
           </div>
         {/if}
-        
+
       </div>
       
   
       <div class="flex justify-between items-center p-5 text-xs lg:text-base">
         <div class="social-links">
-          <a href="https://twitter.com" target="_blank">TWITTER</a>
-          <a href="https://oc.app" target="_blank">OPENCHAT</a>
+          <a href="https://x.com/GolfPadDAO" target="_blank">X</a>
           <a href="https://youtube.com" target="_blank">YOUTUBE</a>
         </div>
         
