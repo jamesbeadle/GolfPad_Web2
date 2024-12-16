@@ -13,7 +13,7 @@
     const navItems = writable<{ name: string; route: string }[]>([
       { name: 'HOME', route: 'home' },
       { name: 'WHITEPAPER', route: 'whitepaper' },
-      { name: 'GAME RULES', route: 'game-rules' }
+      //{ name: 'GAME RULES', route: 'game-rules' }
     ]);
   
     function selectRoute(route: string) {
@@ -83,7 +83,8 @@
             </button>
           </div>
         {/each}
-
+        
+        <!--
         {#if $authStore.isLoggedIn}
           <div class="nav-item expanded">
             <button
@@ -93,6 +94,7 @@
             </button>
           </div>
         {/if}
+        -->
 
       </div>
       
