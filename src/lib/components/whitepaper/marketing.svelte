@@ -1,5 +1,6 @@
 <script lang="ts">
   import { onMount } from "svelte";
+    import BrandText from "../icons/brand-text.svelte";
 
   onMount(() => {
       window.scrollTo(0, 0);
@@ -9,7 +10,7 @@
     <h2 class="text-2xl font-black text-black condensed">MARKETING</h2>
     
     <p>
-      Waterway Labs are an expanding tech company with a focus on real world events to introduce people to the Internet Computer blockchain. 
+      Waterway Labs are an expanding tech company with a focus on real world events to introduce people to new community driven applications. 
     </p>
   
     <p>
@@ -25,20 +26,19 @@
     </div>
   
     <p>
-      <span class="condensed">GOLFPAD</span> will be no different, we are creating a floating mini golf course, to be used for promotional events throughout the UK.
+      <BrandText content="GOLFPAD" /> will be no different, we are creating a floating mini golf course, to be used for promotional events throughout the UK.
     </p>
   
     <p>
-      We plan to moor our floating <span class="condensed">GOLFPAD MINIPUTT</span> course near some of the best golf courses in the world, in the heart of Surrey in the United Kingdom.
+      We plan to moor our floating <BrandText content="GOLFPAD MINIPUTT" /> course near some of the best golf courses in the world, in the heart of Surrey in the United Kingdom.
     </p>
   
     <p>
-      We will use our unique setup to provide entertaining golf gamification to real world users. Content will be recorded and added to the range of Waterway Labs social media channels.
+      We will use our unique setup to provide entertaining golf gamification to real world users, building a strong social media presence within this already competitive environment. 
     </p>
   
     <p>
-      With the largest anticipated user base for <span class="condensed">GOLFPAD</span> being in the US, we plan to focus on signing up courses as soon as possible through reverse promotion. 
-      We will approach a course and ask to become the featured course for a day, adding them to the platform whilst showcasing their course in the best way possible.
+      We recognise that the US is likely to be our largest market. To ensure a seamless entry, our promotional team is already building strong relationships and working to showcase the beauty of their courses on our platform. Through this effort, we aim to inspire the next generation of golfers with our innovative games    
     </p>
   </div>
   

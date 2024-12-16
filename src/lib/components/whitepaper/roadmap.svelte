@@ -1,5 +1,6 @@
 <script lang="ts">
   import { onMount } from "svelte";
+    import BrandText from "../icons/brand-text.svelte";
 
   onMount(() => {
       window.scrollTo(0, 0);
@@ -10,20 +11,21 @@
 
   <div class="w-full mt-4">
     <img 
-      src="roadmap.png" 
+      src="whitepaper/roadmap.png" 
       alt="roadmap" 
       class="w-full h-64 md:h-72 lg:h-80 rounded-md shadow-md object-cover object-center" 
     />
   </div>
- 
   <p>
-      2024: Launch of our first 4 unique games, allowing the world to begin enjoying our new game formats. 
-      Promotion will begin using our floating <span class="condensed">GOLFPAD MINIPUTT</span> course in the UK.
-      We will begin signing up golf courses around the world to be showcased within the <span class="condensed">GOLFPAD</span> platform. 
+    <BrandText content="Q1 2025" />: We will begin the year signing up users and introducing them to the first of our player tools, <BrandText content="YARDAGE SETS" />.
   </p>
-  <p>2025: We will extend <span class="condensed">GOLFPAD</span> features to provide professional golf coaches with the tools required to build their own golf school. 
-    These tools will enable coaches to manage the students they train and offer users around the world a content based subscription service filled with golf training videos.
   <p>
-    2025 Onwards: Continued promotion of <span class="condensed">GOLFPAD</span>, introducing real world golf tournaments, mini games and advertising features.
+    <BrandText content="Q2 2025" />: As the summer season gets into full swing, our users will begin to feel familiar with <BrandText content="MULLIGANS" />, <BrandText content="BANDS" /> and <BrandText content="Next Up" />.
+  </p>
+  <p>
+    <BrandText content="Q3 2025" />: We will follow up our 4 ball games with our first team game, <BrandText content="BUILD IT" />.
+  </p>
+  <p>
+    <BrandText content="Q4 2025" />: We will evaluate the technology landscape and look to decentralise either ownership or profits of the <BrandText content="GOLFPAD" /> platform with its users.
   </p>
 </div>

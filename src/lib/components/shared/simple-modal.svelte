@@ -58,10 +58,10 @@
   >
     <div
       bind:this={modalElement}
-      class="bg-BrandYellow rounded-lg shadow-lg p-6 max-w-lg w-full mx-4 text-black outline-none"
+      class="bg-BrandYellow rounded-lg shadow-lg max-w-lg w-full mx-4 text-black outline-none"
       tabindex="-1"
     >
-      <header class="flex items-center justify-between mb-4">
+      <header class="flex items-center justify-between py-2 px-6">
         <h2 class="text-3xl condensed">{title}</h2>
         <button
           type="button"
@@ -72,7 +72,7 @@
           <Close className="w-6" />
         </button>
       </header>
-      <div class="overflow-auto">
+      <div class="overflow-auto bg-white p-6 rounded-b-lg">
         <slot />
       </div>
     </div>

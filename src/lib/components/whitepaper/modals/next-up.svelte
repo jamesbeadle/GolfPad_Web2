@@ -1,4 +1,5 @@
 <script lang="ts">
+    import BrandText from "$lib/components/icons/brand-text.svelte";
     import SimpleModal from "$lib/components/shared/simple-modal.svelte";
     
     export let visible: boolean;
@@ -14,10 +15,10 @@
           class="w-full h-48 md:w-1/3 md:h-auto rounded-lg shadow-lg object-cover object-center md:object-[25%_top]" 
         />
         <div class="flex flex-col space-y-2 text-lg leading-relaxed">
-          <p><span class="condensed">NEXT UP</span> is built around going first on the tee, needing to win the holes assigned to you.</p>
+          <p><BrandText content="NEXT UP" /> is built around going first on the tee, needing to win the holes assigned to you.</p>
           <p>A golfer gets 3 points for successfully defending a hole, an opponent will get 1 if they can beat them.</p>
-          <p>Whoever tees off first is randomized equally throughout the round. Any remaining holes are assigned to the golfer with the lowest score at the time of tee off, allowing them to successfully defend the hole and potentially get back into the game.</p>
-          <p><span class="condensed">NEXT UP</span> trains you to get good off the tee, when it matters most.</p>
+          <p>The game will randomise the person next on the tee equally throughout the round. Any remaining holes are assigned to the golfer with the lowest score at the time of tee off, allowing them to successfully defend the hole and potentially get back into the game.</p>
+          <p><BrandText content="NEXT UP" /> trains you to get good off the tee, when it matters most.</p>
         </div>
       </div>
     </div>
