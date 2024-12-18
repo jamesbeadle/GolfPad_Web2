@@ -12,8 +12,8 @@
     const { data: signInData, error: authError } = await supabase.auth.signInWithOAuth({
       provider: 'google',
       options: {
-        //redirectTo: 'https://www.golfpad.xyz' //TODO Replace when live update with env vars
-        redirectTo: 'http://localhost:5173'
+        redirectTo: 'https://www.golfpad.xyz' //TODO Replace when live update with env vars
+        //redirectTo: 'http://localhost:5173'
       }
     });
 
