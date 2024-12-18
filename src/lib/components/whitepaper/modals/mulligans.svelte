@@ -6,8 +6,8 @@
   export let closeModal: () => void;
 
   const images = [
-    { src: "whitepaper/mulligans1.jpg", alt: "In-game view", nextLabel: "Show results view" },
-    { src: "whitepaper/mulligans2.jpg", alt: "Results screen", nextLabel: "Show in-game view" }
+    { src: "whitepaper/mulligans1.jpg", alt: "In-game view", nextLabel: "Show Results View" },
+    { src: "whitepaper/mulligans2.jpg", alt: "Results screen", nextLabel: "Show In-game View" }
   ];
 
   let currentImageIndex = 0;

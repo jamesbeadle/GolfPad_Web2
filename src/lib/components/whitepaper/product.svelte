@@ -4,12 +4,15 @@
   import BuildIt from "./modals/build-it.svelte";
   import Mulligans from "./modals/mulligans.svelte";
   import NextUp from "./modals/next-up.svelte";
+  import Prophet from "./modals/prophet.svelte";
+
   import { onMount } from "svelte";
 
   let showMulligans = false;
   let showBands = false;
   let showBuildIt = false;
   let showNextUp = false;
+  let showProphet = false;
   
   onMount(() => {
       window.scrollTo(0, 0);
@@ -46,6 +49,14 @@
   function closeNextUp(){
     showNextUp = false;
   }
+
+  function openProphet(){
+    showProphet = true;
+  }
+
+  function closeProphet(){
+    showProphet = false;
+  }
 </script>
 
 {#if showMulligans}
@@ -62,6 +73,9 @@
 
 {#if showNextUp}
   <NextUp closeModal={closeNextUp} visible={showNextUp} />
+{/if}
+{#if showProphet}
+  <Prophet closeModal={closeProphet} visible={showProphet} />
 {/if}
 
 <div class="md:px-4">
@@ -80,26 +94,41 @@
       In the sections that follow, we’ll highlight each of these four experiences, explaining what sets them apart and why they belong in your golf journey. As our platform evolves, we’ll continue shaping new and exciting ways to play, ensuring <BrandText content="GOLFPAD" /> remains a hub where golf’s past, present, and future are seamlessly united.
     </p>
   </div>
-  <div class="flex flex-col w-full space-y-4 md:flex-row md:space-y-0 md:space-x-2  mt-2">
-    <div class="flex flex-col w-full space-y-2 md:w-1/4">
-      <img src="game-images/prophet.png" alt="mulligans" class="w-full" />
+  <div class="pt-4 flex flex-col w-full space-y-4 md:flex-row md:space-y-0 md:space-x-2 mt-2">
+    <div class="flex flex-col w-full space-y-2 md:w-1/5">
+      <div class="aspect-square rounded-2xl overflow-hidden">
+        <img src="game-images/mulligans.png" alt="mulligans" class="w-full h-full object-fill" />
+      </div>
       <p class="text-3xl text-center condensed md:text-lg">MULLIGANS</p>
       <button on:click={openMulligans} class="px-4 py-2 text-xs rounded bg-BrandForest text-BrandYellow">More Info</button>
     </div>
-    <div class="flex flex-col w-full space-y-2 md:w-1/4">
-      <img src="game-images/bands.png" alt="bands" class="w-full" />
+    <div class="flex flex-col w-full space-y-2 md:w-1/5">
+      <div class="aspect-square rounded-2xl overflow-hidden">
+        <img src="game-images/bands.png" alt="bands" class="w-full h-full object-cover" />
+      </div>
       <p class="text-3xl text-center condensed md:text-lg">BANDS</p>
       <button on:click={openBands} class="px-4 py-2 text-xs rounded bg-BrandForest text-BrandYellow">More Info</button>
     </div>
-    <div class="flex flex-col w-full space-y-2 md:w-1/4">
-      <img src="game-images/build-it.png" alt="build-it" class="w-full" />
+    <div class="flex flex-col w-full space-y-2 md:w-1/5">
+      <div class="aspect-square rounded-2xl overflow-hidden">
+        <img src="game-images/build-it.png" alt="build-it" class="w-full h-full object-cover" />
+      </div>
       <p class="text-3xl text-center condensed md:text-lg">BUILD IT</p>
       <button on:click={openBuildIt} class="px-4 py-2 text-xs rounded bg-BrandForest text-BrandYellow">More Info</button>
     </div>
-    <div class="flex flex-col w-full space-y-2 md:w-1/4">
-      <img src="game-images/next-up.png" alt="next-up" class="w-full" />
+    <div class="flex flex-col w-full space-y-2 md:w-1/5">
+      <div class="aspect-square rounded-2xl overflow-hidden">
+        <img src="game-images/next-up.png" alt="next-up" class="w-full h-full object-cover" />
+      </div>
       <p class="text-3xl text-center condensed md:text-lg">NEXT UP</p>
       <button on:click={openNextUp} class="px-4 py-2 text-xs rounded bg-BrandForest text-BrandYellow">More Info</button>
+    </div>
+    <div class="flex flex-col w-full space-y-2 md:w-1/5">
+      <div class="aspect-square rounded-2xl overflow-hidden">
+        <img src="game-images/prophet.png" alt="prophet" class="w-full h-full object-cover" />
+      </div>
+      <p class="text-3xl text-center condensed md:text-lg">PROPHET</p>
+      <button on:click={openProphet} class="px-4 py-2 text-xs rounded bg-BrandForest text-BrandYellow">More Info</button>
     </div>
   </div>
 </div>

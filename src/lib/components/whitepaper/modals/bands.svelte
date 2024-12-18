@@ -5,16 +5,36 @@
 
     export let visible: boolean;
     export let closeModal: () => void;
+
+    const images = [
+    { src: "whitepaper/bands1.jpg", alt: "Prediction view", nextLabel: "Show Live View" },
+    { src: "whitepaper/bands2.jpg", alt: "Live view", nextLabel: "Show Results View" },
+    { src: "whitepaper/bands3.jpg", alt: "Results view", nextLabel: "Show Prediction View" }
+  ];
+
+  let currentImageIndex = 0;
+
+  function toggleImage() {
+    currentImageIndex = (currentImageIndex + 1) % images.length;
+  }
   </script>
   
   <SimpleModal title="BANDS" showModal={visible} onClose={closeModal}>    
-    <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
-      <img 
-        src="whitepaper/bands-game.png" 
-        alt="game" 
-        class="w-full h-48 md:w-1/3 md:h-auto rounded-lg shadow-lg object-cover object-center md:object-[25%_top]" 
-      />
-      <div class="flex flex-col space-y-2 text-lg leading-relaxed">
+    <div class="flex flex-col md:flex-row md:items-start md:space-x-4 space-y-4 md:space-y-0">
+      <div class="flex flex-col items-center md:items-start md:w-1/3 space-y-4">
+        <img 
+          src={images[currentImageIndex].src} 
+          alt={images[currentImageIndex].alt} 
+          class="w-full rounded-lg shadow-lg object-cover"
+        />
+        <button 
+          class="brand-button w-full"
+          on:click={toggleImage}
+        >
+          {images[currentImageIndex].nextLabel}
+        </button>
+      </div>
+      <div class="flex flex-col space-y-2 text-lg leading-relaxed md:w-2/3">
         <p><BrandText content="BANDS" /> is designed for those purple patches in your golf round you know you typically play well in.</p>
         <p>You select a 3 hole range, known as a <BrandText content="BAND" />, as the part of your round you will hit one of our 9 achievement categories.</p>
         <p>You'll build up points for scoring well on holes along with hitting fairways, greens or not losing a ball.</p>
