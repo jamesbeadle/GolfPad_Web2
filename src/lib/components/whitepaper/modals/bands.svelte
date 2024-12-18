@@ -34,7 +34,7 @@
           {images[currentImageIndex].nextLabel}
         </button>
       </div>
-      <div class="flex flex-col space-y-2 text-lg leading-relaxed md:w-2/3">
+      <div class="flex flex-col space-y-2 text-xl leading-relaxed md:w-2/3">
         <p><BrandText content="BANDS" /> is designed for those purple patches in your golf round you know you typically play well in.</p>
         <p>You select a 3 hole range, known as a <BrandText content="BAND" />, as the part of your round you will hit one of our 9 achievement categories.</p>
         <p>You'll build up points for scoring well on holes along with hitting fairways, greens or not losing a ball.</p>

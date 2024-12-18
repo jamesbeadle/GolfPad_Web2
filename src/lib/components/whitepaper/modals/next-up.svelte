@@ -32,7 +32,7 @@
           {images[currentImageIndex].nextLabel}
         </button>
       </div>
-      <div class="flex flex-col space-y-2 text-lg leading-relaxed md:w-2/3">
+      <div class="flex flex-col space-y-2 text-xl leading-relaxed md:w-2/3">
           <p><BrandText content="NEXT UP" /> is built around going first on the tee, needing to win the holes assigned to you.</p>
           <p>A golfer gets 3 points for successfully defending a hole, an opponent will get 1 if they can beat them.</p>
           <p>The game will randomise the person next on the tee equally throughout the round. Any remaining holes are assigned to the golfer with the lowest score at the time of tee off, allowing them to successfully defend the hole and potentially get back into the game.</p>

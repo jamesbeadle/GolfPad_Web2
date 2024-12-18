@@ -33,7 +33,7 @@
         {images[currentImageIndex].nextLabel}
       </button>
     </div>
-    <div class="flex flex-col space-y-2 text-lg leading-relaxed md:w-2/3">
+    <div class="flex flex-col space-y-2 text-xl leading-relaxed md:w-2/3">
       <p><BrandText content="BUILD IT" /> allows groups of friends to play each other over a customisable period of time on a chosen course.</p>
       <p>Golfers put together a team of players to compete against other teams, building a combined scorecard of their lowest scores.</p>
       <p>The competition is decided after the customisable period ends, allowing teams to compete for a single round or over an entire year.</p>

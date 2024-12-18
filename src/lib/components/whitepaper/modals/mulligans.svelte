@@ -33,11 +33,11 @@
       </button>
     </div>
 
-    <div class="flex flex-col space-y-2 text-lg leading-relaxed md:w-2/3">
-      <p><BrandText content="MULLIGANS" /> is a strategic golf game where you decide when to utilise your free golf shots during a game against your friends.</p>
-      <p>A golfer automatically receives a mulligan every 3 holes, starting with the 1st hole.</p>
-      <p>Whichever golfer wins the hole gets an additional mulligan.</p>
-      <p>Golfers can strategically attempt to win a hole or stop someone else from winning by playing a mulligan.</p>
+    <div class="flex flex-col space-y-2 text-xl leading-relaxed md:w-2/3">
+      <p><BrandText content="MULLIGANS" /> is a new strategic golf game based on the traditional match play format.</p>
+      <p>Both players automatically receive a mulligan every 3 holes, starting with the 1st and getting another one on the 4th, 7th, 10th, 13th and 16th holes.</p>
+      <p>You and a friend compete for additional <BrandText content="MULLIGANS" />, receiving them for winning a hole.</p>
+      <p>Golfers play their <BrandText content="MULLIGANS" /> strategically in attempt to win a hole or stop someone else from winning.</p>
       <p><BrandText content="MULLIGANS" /> gives golfers a new way of enjoying their round, safe in the knowledge a few mistakes are expected.</p>
     </div>
   </div>
