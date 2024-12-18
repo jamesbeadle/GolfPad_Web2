@@ -99,17 +99,17 @@
     </div>
     <div class="flex flex-col w-full space-y-2 md:w-1/4">
       <div class="aspect-square rounded-2xl overflow-hidden">
-        <img src="game-images/build-it.png" alt="build-it" class="w-full h-full object-cover" />
-      </div>
-      <p class="text-3xl text-center condensed md:text-lg">BUILD IT</p>
-      <button on:click={openBuildIt} class="px-4 py-2 text-xs rounded bg-BrandForest text-BrandYellow">More Info</button>
-    </div>
-    <div class="flex flex-col w-full space-y-2 md:w-1/4">
-      <div class="aspect-square rounded-2xl overflow-hidden">
         <img src="game-images/next-up.png" alt="next-up" class="w-full h-full object-cover" />
       </div>
       <p class="text-3xl text-center condensed md:text-lg">NEXT UP</p>
       <button on:click={openNextUp} class="px-4 py-2 text-xs rounded bg-BrandForest text-BrandYellow">More Info</button>
+    </div>
+    <div class="flex flex-col w-full space-y-2 md:w-1/4">
+      <div class="aspect-square rounded-2xl overflow-hidden">
+        <img src="game-images/build-it.png" alt="build-it" class="w-full h-full object-cover" />
+      </div>
+      <p class="text-3xl text-center condensed md:text-lg">BUILD IT</p>
+      <button on:click={openBuildIt} class="px-4 py-2 text-xs rounded bg-BrandForest text-BrandYellow">More Info</button>
     </div>
   </div>
 </div>
