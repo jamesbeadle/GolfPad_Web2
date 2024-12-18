@@ -45,7 +45,7 @@
       </h2>
       <div class="flex flex-col w-full md:flex-row">
         <img 
-          src="game-images/mulligans.png" 
+          src="game-images/games.png" 
           alt="hero" 
           class="w-full h-48 md:w-1/4 md:h-auto object-cover object-[50%_var(--crop-position-y)] rounded-lg" 
           style="--crop-position-y: {cropPositionY};"
