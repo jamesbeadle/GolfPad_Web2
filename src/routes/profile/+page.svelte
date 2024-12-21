@@ -1,19 +1,10 @@
-<script lang="ts">
-    import type { PageData } from './$types';
-    export let data: PageData;
-  
-    import { createClient } from '@supabase/supabase-js';
-    import { PUBLIC_SUPABASE_URL, PUBLIC_SUPABASE_ANON_KEY } from '$env/static/public';
-    const supabase = createClient(PUBLIC_SUPABASE_URL, PUBLIC_SUPABASE_ANON_KEY);
-  
-    let { profile, courses, userId } = data;
-  
-    let username = profile?.username ?? '';
-    let handicap = profile?.handicap?.toString() ?? '';
-    let home_course_id = profile?.home_course_id?.toString() ?? '';
+<script lang="ts">      
+    let username = '';// profile?.username ?? '';
+    let handicap = '';// profile?.handicap?.toString() ?? '';
+    let home_course_id ='';// profile?.home_course_id?.toString() ?? '';
     let profilePicFile: File | null = null;
     const placeholderProfilePic = '/img/placeholder-profile.png';
-    let currentProfilePic = profile?.profile_pic_url ?? placeholderProfilePic;
+    let currentProfilePic ='';// profile?.profile_pic_url ?? placeholderProfilePic;
   
     function validateForm() {
       if (username.length < 6 || username.length > 20) {
@@ -41,50 +32,7 @@
   
     async function saveProfile() {
       if (!validateForm()) return;
-  
-      const { data: sessionData } = await supabase.auth.getSession();
-      if (!sessionData?.session) {
-        alert("You must be logged in to save your profile.");
-        return;
-      }
-  
-      const uid = sessionData.session.user.id;
-      let profilePicUrl = profile?.profile_pic_url ?? null;
-  
-      if (profilePicFile) {
-        const { data: uploadData, error: uploadError } = await supabase.storage
-          .from('profile-pics')
-          .upload(`public/${uid}.png`, profilePicFile, { upsert: true });
-  
-        if (uploadError) {
-          console.error(uploadError);
-          alert("Error uploading profile picture");
-          return;
-        }
-  
-        const { data: publicUrl } = supabase.storage
-          .from('profile-pics')
-          .getPublicUrl(`public/${uid}.png`);
-        
-        profilePicUrl = publicUrl.publicUrl;
-        currentProfilePic = profilePicUrl;
-      }
-  
-      const { error } = await supabase.from('profiles').upsert({
-        id: uid,
-        username,
-        handicap: handicap !== '' ? Number(handicap) : null,
-        home_course_id: home_course_id !== '' ? Number(home_course_id) : null,
-        created_at: profile?.created_at ?? new Date().toISOString(),
-        profile_pic_url: profilePicUrl
-      });
-  
-      if (error) {
-        console.error(error);
-        alert("Error saving profile");
-      } else {
-        alert("Profile saved!");
-      }
+    
     }
   </script>
   
@@ -149,9 +97,11 @@
             bind:value={home_course_id}
           >
             <option value="">None</option>
+            <!--
             {#each courses as course}
               <option value={course.id}>{course.name}</option>
             {/each}
+            -->
           </select>
         </div>
   

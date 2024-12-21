@@ -16,7 +16,6 @@
 		"@sveltejs/vite-plugin-svelte": "^5.0.2",
 		"autoprefixer": "^10.4.20",
 		"postcss": "^8.4.49",
-		"supabase": "^2.0.0",
 		"svelte": "^5.0.0",
 		"svelte-check": "^4.0.0",
 		"svelte-preprocess": "^6.0.3",
@@ -25,8 +24,6 @@
 		"vite": "^6.0.0"
 	},
 	"dependencies": {
-		"@supabase/ssr": "^0.5.2",
-		"@supabase/supabase-js": "^2.47.7",
-		"@sveltejs/adapter-vercel": "^5.5.2"
+		"firebase": "^11.1.0"
 	}
 }

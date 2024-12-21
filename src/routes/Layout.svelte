@@ -1,15 +1,10 @@
 <script lang="ts">
   import { onMount, onDestroy } from "svelte";
   import { browser } from "$app/environment";
-  import { invalidate } from '$app/navigation'
   import NavOverlay from "$lib/components/shared/navigation.svelte";
-  import type { AuthChangeEvent, Session } from '@supabase/supabase-js';
 
   import "../app.css";
 
-  export let data: { session: Session | null; supabase: any };
-
-  let { session, supabase } = data;
 
   let isLoading = true;
   let backgroundSpinnerRemoved = false;
@@ -17,7 +12,6 @@
   let selectedRoute = 'home';
   let isHomepage = false;
 
-  let unsubscribeAuth: (() => void) | undefined;
 
   onMount(() => {
     if (!browser) return;
@@ -28,20 +22,10 @@
 
     isHomepage = window.location.pathname === "/";
 
-    const { data: authListener } = supabase.auth.onAuthStateChange(
-      (event: AuthChangeEvent, newSession: Session | null) => {
-        if (newSession?.expires_at !== session?.expires_at) {
-          invalidate("supabase:auth");
-        }
-      }
-    );
-
-    unsubscribeAuth = authListener?.unsubscribe;
     isLoading = false;
   });
 
   onDestroy(() => {
-    unsubscribeAuth?.();
   });
 
   function toggleNav() {
