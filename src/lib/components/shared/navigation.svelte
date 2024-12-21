@@ -4,7 +4,7 @@
     import { writable } from "svelte/store";
     import { goto } from "$app/navigation";
     import { page } from "$app/stores";
-    import { authStore } from "$lib/stores/auth-store"; 
+    import { currentUser } from "$lib/stores/auth-store";
   
     export let expanded: boolean = false;
     export let selectedRoute: string = 'home';
