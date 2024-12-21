@@ -1,19 +1,16 @@
 <script lang="ts">
-  import type { Unsubscriber } from 'svelte/store';
-  import Google from "$lib/components/icons/google.svelte";
-  
-  import { signInWithGoogle } from "$lib/firebase";
-  import { currentUser } from "$lib/stores/auth-store";
-
   import { onMount, onDestroy } from "svelte";
-    import type { User } from 'firebase/auth';
-    import Layout from './Layout.svelte';
+  import type { Unsubscriber } from 'svelte/store';
+  import { signInWithGoogle } from "$lib/firebase";
+  import Google from "$lib/components/icons/google.svelte";
+  import type { User } from 'firebase/auth';
+  import Layout from './Layout.svelte';
+  import { currentUser } from "$lib/stores/auth-store";
 
   let user: User | null;
   let unsubscribe: Unsubscriber; 
 
   onMount(() => {
-    // 2. Subscribe to the currentUser store
     unsubscribe = currentUser.subscribe((val) => {
       user = val;
     });
@@ -23,7 +20,6 @@
     if (unsubscribe) unsubscribe();
   });
 
-  // 3. Sign-in method
   async function handleSignInWithGoogle() {
     await signInWithGoogle();
   }
@@ -42,7 +38,7 @@
     {#if user}
       Welcome, {user.email}!
     {:else}
-      <button on:click={signInWithGoogle} class="brand-button">
+      <button on:click={handleSignInWithGoogle} class="brand-button">
         <span class="flex flex-row items-center">
           Sign In With Google
           <Google className="ml-2 w-6" />
