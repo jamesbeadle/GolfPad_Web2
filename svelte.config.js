@@ -1,16 +1,16 @@
 import adapter from '@sveltejs/adapter-node';
 import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 
-/** @type {import('@sveltejs/kit').Config} */
-const config = {
+export default {
   preprocess: vitePreprocess(),
+
   kit: {
     adapter: adapter({
-      out: 'build' // or any directory you like
-      // If you want SvelteKit to automatically read PORT, see "envPrefix" below
-      // envPrefix: 'PORT'
+      out: 'build',
+      // This ensures the built server reads `PORT` from environment
+      env: {
+        port: process.env.PORT
+      }
     })
   }
 };
-
-export default config;
