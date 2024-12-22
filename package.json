@@ -5,7 +5,7 @@
 	"type": "module",
 	"scripts": {
 		"start": "node build/index.js",
-		"build": "svelte-kit build",
+		"build": "vite build",
 		"dev": "vite dev",
 		"preview": "vite preview",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
