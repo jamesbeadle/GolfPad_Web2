@@ -9,7 +9,12 @@ export default {
       out: 'build',
       // This ensures the built server reads `PORT` from environment
       env: {
-        port: process.env.PORT
+        host: '0.0.0.0',
+
+
+                port: process.env.PORT || 8080
+
+
       }
     })
   }
